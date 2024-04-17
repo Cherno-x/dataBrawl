@@ -5,7 +5,6 @@ def switch_template(template):
     switcher = {
         "basic": "./src/basic.cpp",
         "dynamic": "./src/dynamic.cpp",
-        "demo": "./src/demo.cpp",
         "remote": "./src/remote.cpp",
         5: "Case 5"
     }
