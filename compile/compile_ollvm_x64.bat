@@ -1,0 +1,1 @@
+clang-cl.exe .\lib\new_loader.cpp -m64 -mllvm -bcf -mllvm -bcf_prob=73 -mllvm -bcf_loop=1 -mllvm -sub -mllvm -sub_loop=5 -mllvm -fla -mllvm -split_num=5 -mllvm -aesSeed=1234BEEFDEAD1234DEADBEEFDEAD1234 -o implant.exe -link -SUBSYSTEM:WINDOWS kernel32.lib Advapi32.lib user32.lib winhttp.lib libcmt.lib libcpmt.lib ucrt.lib vcruntime.lib msvcprt.lib

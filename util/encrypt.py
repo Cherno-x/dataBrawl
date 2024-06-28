@@ -2,9 +2,12 @@
 def xor_encrypt(hex_strings, key):
     encrypted_hex_array = []
     for hex_string in hex_strings:
+        # 将字符串形式的16进制数转换为整数值
         num = int(hex_string, 16)
+        # 逐个对密钥进行循环异或操作
         for k in key:
-            num ^= int(k, 16) 
+            num ^= int(k, 16)  # 将密钥也视作十六进制数进行异或
+        # 将加密后的整数值转换为16进制字符串，并添加到结果数组中
         encrypted_hex_array.append(hex(num))
     return encrypted_hex_array
 

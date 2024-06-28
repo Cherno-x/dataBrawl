@@ -1,1 +1,1 @@
-gcc new_loader.cpp -mwindows -m32 -o implant.exe
+gcc -Os -s .\lib\new_loader.cpp -mwindows -m32 -lwinhttp -o implant.exe -lstdc++ -static
